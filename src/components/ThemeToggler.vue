@@ -59,13 +59,13 @@ export default defineComponent({
     <SunIcon
       id="light-theme-toggle-icon"
       aria-hidden="true"
-      class="h-7 lg:h-8 w-7 lg:w-8 text-stone-900 active:text-stone-600"
+      class="h-7 lg:h-8 w-7 lg:w-8 text-stone-900 active:text-stone-400"
       :class="[lightTheme ? '' : 'hidden']"
     />
     <MoonIcon
       id="dark-theme-toggle-icon"
       aria-hidden="true"
-      class="h-7 lg:h-8 w-7 lg:w-8 text-slate-100 active:text-slate-400"
+      class="h-7 lg:h-8 w-7 lg:w-8 text-slate-100 active:text-slate-600"
       :class="[lightTheme ? 'hidden' : '']"
     />
   </button>
