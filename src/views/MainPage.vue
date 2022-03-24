@@ -91,6 +91,8 @@ async function hideResultPanel() {
                 <div class="w-full">
                   <p>
                     Pick the right object type for your desired image target.
+                    Using an unsupported object type will result in ambiguous
+                    result.
                   </p>
                 </div>
                 <div class="mt-8 w-full">
@@ -278,7 +280,7 @@ async function hideResultPanel() {
                       class="mx-auto leading-relaxed text-sm mt-6"
                       :class="[unknownCategory ? 'hidden' : '']"
                     >
-                      <span class="font-semibold mr-1">Precision: </span>
+                      <span class="font-semibold mr-1">Confidence: </span>
                       <span>{{ confidence }}</span>
                     </p>
                   </div>

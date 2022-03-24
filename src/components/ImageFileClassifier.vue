@@ -131,9 +131,7 @@ async function performClassification() {
       @addfile="onImageFileAdded"
       @removefile="onImageFileRemoved"
       :class="[imageFileLoaded ? '' : 'hover:scale-105 active:scale-100']"
-      :dropValidation="false"
-      :allow-multiple="false"
-      :allow-file-encode="true"
+      :maxFiles="1"
     />
     <div class="mt-6 w-full flex flex-wrap justify-end">
       <button
