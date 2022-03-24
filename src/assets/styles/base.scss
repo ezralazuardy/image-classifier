@@ -1,3 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "filepond/dist/filepond.min.css";
+@import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
+
+/**
+ * https://stackoverflow.com/questions/25704650/disable-blue-highlight-when-touch-press-object-with-cursorpointer
+ */
+button,
+textarea,
+input,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.filepond--root {
+  font-family: Montserrat, Arial, sans-serif;
+  margin: 0;
+}
+
+.filepond--panel-root {
+  background-color: transparent;
+}
+
+.filepond--credits {
+  display: none;
+}
+
+.filepond--file-action-button {
+  cursor: pointer;
+}
+
+.filepond--drop-label {
+  color: rgb(28 25 23);
+}
+
+.dark .filepond--drop-label {
+  color: rgb(241 245 249);
+}
+
+.filepond--file {
+    font-weight: bold;
+}
+
+label:hover {
+  cursor: pointer;
+}

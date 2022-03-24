@@ -1,21 +1,21 @@
 import { createApp } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import App from "./App.vue";
-import Store from "./store";
-import "./assets/styles/base.scss";
-
 import {
   fa1,
   fa2,
   fa3,
   faDog,
   faCat,
-  faFolder,
-  faCamera,
   faImage,
+  faCamera,
   faMagnifyingGlass,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
+import App from "./App.vue";
+import Router from "./router";
+import Store from "./store";
+import "./assets/styles/base.scss";
 
 library.add(
   fa1,
@@ -23,13 +23,14 @@ library.add(
   fa3,
   faDog,
   faCat,
-  faFolder,
-  faCamera,
   faImage,
-  faMagnifyingGlass
+  faCamera,
+  faMagnifyingGlass,
+  faSpinner
 );
 
 createApp(App)
-  .component("font-awesome-icon", FontAwesomeIcon)
+  .use(Router)
   .use(Store)
+  .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");

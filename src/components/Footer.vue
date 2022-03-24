@@ -3,16 +3,17 @@
     <div class="bg-slate-400 dark:bg-slate-700 drop-shadow-xl z-10 transition">
       <div class="container mx-auto py-8 flex flex-wrap flex-col sm:flex-row">
         <p
-          class="text-stone-900 dark:text-slate-100 text-sm text-center lg:text-left lg:ml-40"
+          class="text-stone-900 dark:text-slate-100 text-md text-center lg:text-left lg:ml-40"
         >
-          © {{ new Date().getFullYear() }} —
+          © 2022 —
           <a
             href="https://ezralazuardy.com"
             rel="noopener noreferrer"
             target="_blank"
-            class="font-semibold text-gray-700 dark:text-gray-300 hover:underline active:text-slate-600 dark:active:text-stone-400 transition"
-            >@ezralazuardy</a
+            class="font-semibold text-gray-700 dark:text-gray-300 hover:underline active:text-gray-900 dark:active:text-gray-400 transition"
           >
+            @ezralazuardy
+          </a>
         </p>
         <span
           class="text-stone-900 dark:text-slate-100 inline-flex sm:ml-auto mt-4 lg:mt-0 justify-center lg:justify-start lg:mr-40"
@@ -21,7 +22,7 @@
             href="https://instagram.com/ezralazuardyy"
             rel="noopener noreferrer"
             target="_blank"
-            class="active:scale-100 hover:scale-125 active:text-slate-600 dark:active:text-stone-400 transition"
+            class="active:scale-100 hover:scale-125 active:text-slate-600 dark:active:text-slate-400 transition"
           >
             <svg
               fill="none"
@@ -42,7 +43,7 @@
             href="https://twitter.com/ezralazuardyy"
             rel="noopener noreferrer"
             target="_blank"
-            class="ml-8 active:scale-100 hover:scale-125 active:text-slate-600 dark:active:text-stone-400 transition"
+            class="ml-8 active:scale-100 hover:scale-125 active:text-slate-600 dark:active:text-slate-400 transition"
           >
             <svg
               fill="currentColor"
@@ -61,7 +62,7 @@
             href="https://soundcloud.com/ezralazuardy"
             rel="noopener noreferrer"
             target="_blank"
-            class="ml-8 active:scale-100 hover:scale-125 active:text-slate-600 dark:active:text-stone-400 transition"
+            class="ml-8 active:scale-100 hover:scale-125 active:text-slate-600 dark:active:text-slate-400 transition"
           >
             <svg
               fill="currentColor"
@@ -81,7 +82,7 @@
             href="https://linkedin.com/in/ezralazuardy"
             rel="noopener noreferrer"
             target="_blank"
-            class="ml-8 active:scale-100 hover:scale-125 active:text-slate-600 dark:active:text-stone-400 transition"
+            class="ml-8 active:scale-100 hover:scale-125 active:text-slate-600 dark:active:text-slate-400 transition"
           >
             <svg
               fill="currentColor"

@@ -31,7 +31,7 @@ export default {
     },
   },
   getters: {
-    getTheme: (state) => {
+    theme: (state) => {
       return state.theme;
     },
   },

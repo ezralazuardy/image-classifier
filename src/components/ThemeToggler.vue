@@ -1,53 +1,38 @@
-<script lang="ts">
-import { mapGetters } from "vuex";
+<script setup lang="ts">
+import { computed, onBeforeMount, ref, watch } from "vue";
+import { useStore } from "vuex";
 import { SunIcon, MoonIcon } from "@heroicons/vue/outline";
-import { defineComponent, ref } from "vue";
 
-export default defineComponent({
-  components: {
-    SunIcon,
-    MoonIcon,
-  },
-  setup() {
-    return {
-      lightTheme: ref(true),
-    };
-  },
-  beforeMount() {
-    this.$store.dispatch("initTheme");
-  },
-  computed: {
-    ...mapGetters({ theme: "getTheme" }),
-  },
-  watch: {
-    theme(newTheme) {
-      if (newTheme === "light") {
-        document?.querySelector("html")?.classList.remove("dark");
-        document
-          ?.querySelector("#light-theme-toggle-icon")
-          ?.classList.remove("hidden");
-        document
-          ?.querySelector("#dark-theme-toggle-icon")
-          ?.classList.add("hidden");
-        this.lightTheme = true;
-      } else {
-        document?.querySelector("html")?.classList.add("dark");
-        document
-          ?.querySelector("#light-theme-toggle-icon")
-          ?.classList.add("hidden");
-        document
-          ?.querySelector("#dark-theme-toggle-icon")
-          ?.classList.remove("hidden");
-        this.lightTheme = false;
-      }
-    },
-  },
-  methods: {
-    toggleTheme() {
-      this.$store.dispatch("toggleTheme");
-    },
-  },
+const sunIcon = ref<HTMLElement>();
+const moonIcon = ref<HTMLElement>();
+
+const lightTheme = ref(true);
+const store = useStore();
+const theme = computed(() => {
+  return store.getters.theme;
 });
+
+onBeforeMount(() => {
+  store.dispatch("initTheme");
+});
+
+watch(theme, async (newTheme, oldTheme) => {
+  if (newTheme === "light") {
+    document?.querySelector("html")?.classList.remove("dark");
+    sunIcon?.value?.classList.remove("hidden");
+    moonIcon?.value?.classList.add("hidden");
+    lightTheme.value = true;
+    return;
+  }
+  document?.querySelector("html")?.classList.add("dark");
+  sunIcon?.value?.classList.add("hidden");
+  moonIcon?.value?.classList.remove("hidden");
+  lightTheme.value = false;
+});
+
+async function toggleTheme() {
+  store.dispatch("toggleTheme");
+}
 </script>
 
 <template>
@@ -57,15 +42,15 @@ export default defineComponent({
     @click="toggleTheme"
   >
     <SunIcon
-      id="light-theme-toggle-icon"
+      ref="sunIcon"
       aria-hidden="true"
-      class="h-7 lg:h-8 w-7 lg:w-8 text-stone-900 active:text-stone-400"
+      class="h-7 lg:h-8 w-7 lg:w-8 text-stone-900 active:text-slate-600 hover:motion-safe:animate-spin"
       :class="[lightTheme ? '' : 'hidden']"
     />
     <MoonIcon
-      id="dark-theme-toggle-icon"
+      ref="moonIcon"
       aria-hidden="true"
-      class="h-7 lg:h-8 w-7 lg:w-8 text-slate-100 active:text-slate-600"
+      class="h-7 lg:h-8 w-7 lg:w-8 text-slate-100 active:text-slate-400 hover:motion-safe:animate-pulse"
       :class="[lightTheme ? 'hidden' : '']"
     />
   </button>
