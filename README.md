@@ -2,17 +2,15 @@
   <img src="https://img.shields.io/github/license/ezralazuardy/heimdall" alt="License" target="_blank" rel="noopener noreferrer">
 </a>
 
-## 🖼️ image-classifier
+## 🖼️ Image Classifier
 
 A simple web application to classify an image data. The use case is to classify a **cat** or **dog** image.
 
-Preview: [https://image-classifier.ezralazuardy.com](https://image-classifier.ezralazuardy.com)
+Preview: [https://imgc.ezralazuardy.com](https://imgc.ezralazuardy.com)
 
 > Get the machine learning models [here](https://teachablemachine.withgoogle.com/models/iDck0-wxs). All of the image model is based on [erkamk/cat-and-dog-images-dataset](https://www.kaggle.com/datasets/erkamk/cat-and-dog-images-dataset).
 
-> This app is written in [Typescript](https://www.typescriptlang.org) using [Vue 3](https://vuejs.org), [Vuex](https://vuex.vuejs.org), [Vite](https://vitejs.dev), [Volar](https://github.com/johnsoncodehk/volar), [p5.js](https://p5js.org), [ml5.js](https://ml5js.org), [Tailwind](https://tailwindcss.com), [Tensorflow.js](https://www.tensorflow.org/js), and [Teachable Machine](https://teachablemachine.withgoogle.com). The project is intended for my Artificial Intelligence coursework at [Diponegoro University](https://ft.undip.ac.id/en/site).
-
-<br/>
+> This app is written in [Typescript](https://www.typescriptlang.org) using [Vue 3](https://vuejs.org), [Vuex](https://vuex.vuejs.org), [Vite](https://vitejs.dev), [Volar](https://github.com/johnsoncodehk/volar), [p5.js](https://p5js.org), [ml5.js](https://ml5js.org), [Tensorflow.js](https://www.tensorflow.org/js), [Tailwind](https://tailwindcss.com), and [Teachable Machine](https://teachablemachine.withgoogle.com). The project is intended for my Artificial Intelligence coursework at [Diponegoro University](https://ft.undip.ac.id/en/site).
 
 ## 🚀 Quick start
 
@@ -25,4 +23,4 @@ npm install
 npm run dev
 ```
 
-> ⚠️ [Node.js](https://nodejs.org) need to be installed in your environment.
+> ⚠️ [Node.js](https://nodejs.org) need to be installed in your environment. Internet connection is required to run the app.
