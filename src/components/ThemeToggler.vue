@@ -5,7 +5,6 @@ import { SunIcon, MoonIcon } from "@heroicons/vue/outline";
 
 const sunIcon = ref<HTMLElement>();
 const moonIcon = ref<HTMLElement>();
-
 const lightTheme = ref(true);
 const store = useStore();
 const theme = computed(() => {

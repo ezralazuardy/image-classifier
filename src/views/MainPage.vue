@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import Container from "../components/Container.vue";
 import NavigationBar from "../components/NavigationBar.vue";
@@ -10,22 +10,55 @@ const router = useRouter();
 
 const resultPanel = ref<HTMLElement>();
 const resultPanelStep = ref<HTMLElement>();
-
+const confidenceCounter = ref<any>();
 const unknownCategory = ref(false);
-const confidence = ref("");
+const resultPanelOpened = ref(false);
+const resultPanelTitle = ref("");
+const cachedConfidence = ref(0);
+const confidence = ref(0);
 const category = ref("");
 const fact = ref("");
 
 const classifierMethod = computed(() => {
-  return router.currentRoute.value.name === "main-page" ? "file" : "webcam";
+  const routeName =
+    router.currentRoute.value.name === "main-page" ? "file" : "webcam";
+  if (routeName === "file") hideResultPanel();
+  return routeName;
+});
+
+watch(classifierMethod, () => {
+  hideResultPanel();
+});
+
+watch(confidence, () => {
+  confidenceCounter.value.start();
 });
 
 async function onClassificationProgress() {
   await hideResultPanel();
 }
 
-async function onClassificationResult({ newConfidence, newCategory, newFact }) {
+async function onClassificationImageRemoved() {
+  await hideResultPanel();
+}
+
+async function onClassificationResult(data) {
+  await updateClassificationData(data);
+  await showResultPanel();
+}
+
+async function onClassificationStream(data) {
+  await updateClassificationData(data);
+  await showResultPanel(true);
+}
+
+async function updateClassificationData({
+  newConfidence,
+  newCategory,
+  newFact,
+}) {
   unknownCategory.value = newCategory.toLocaleLowerCase() === "unknown";
+  cachedConfidence.value = confidence.value;
   confidence.value = newConfidence;
   category.value = unknownCategory.value
     ? "Whoops! what is that thing?"
@@ -33,33 +66,33 @@ async function onClassificationResult({ newConfidence, newCategory, newFact }) {
   fact.value = unknownCategory.value
     ? "Looks like an error has occurred. Somehow, our system can't detect the object inside your image target. Please try again later or contact the author."
     : newFact;
-  await showResultPanel();
-}
-
-async function onClassificationImageRemoved() {
-  await hideResultPanel();
 }
 
 async function showResultPanel(asStream: boolean = false) {
-  if (asStream) {
-    return;
-  }
-  resultPanel?.value?.classList.replace("hidden", "flex");
-  resultPanel?.value?.classList.replace("opacity-100", "opacity-0");
-  resultPanelStep?.value?.classList.replace("hidden", "flex");
-  resultPanelStep?.value?.classList.replace("opacity-100", "opacity-0");
   setTimeout(() => {
-    resultPanel?.value?.classList.replace("opacity-0", "opacity-100");
-    resultPanelStep?.value?.classList.replace("opacity-0", "opacity-100");
+    if (resultPanelOpened.value) return;
+    resultPanelOpened.value = true;
+    resultPanelTitle.value = `Check your result${asStream ? " (Live)" : ""}`;
+    resultPanel?.value?.classList.replace("hidden", "flex");
+    resultPanel?.value?.classList.replace("opacity-100", "opacity-0");
+    resultPanelStep?.value?.classList.replace("hidden", "flex");
+    resultPanelStep?.value?.classList.replace("opacity-100", "opacity-0");
+    setTimeout(() => {
+      resultPanel?.value?.classList.replace("opacity-0", "opacity-100");
+      resultPanelStep?.value?.classList.replace("opacity-0", "opacity-100");
+    }, 250);
   }, 250);
 }
 
 async function hideResultPanel() {
-  resultPanel?.value?.classList.replace("opacity-100", "opacity-0");
-  resultPanelStep?.value?.classList.replace("opacity-100", "opacity-0");
   setTimeout(() => {
-    resultPanel?.value?.classList.replace("flex", "hidden");
-    resultPanelStep?.value?.classList.replace("flex", "hidden");
+    resultPanelOpened.value = false;
+    resultPanel?.value?.classList.replace("opacity-100", "opacity-0");
+    resultPanelStep?.value?.classList.replace("opacity-100", "opacity-0");
+    setTimeout(() => {
+      resultPanel?.value?.classList.replace("flex", "hidden");
+      resultPanelStep?.value?.classList.replace("flex", "hidden");
+    }, 250);
   }, 250);
 }
 </script>
@@ -230,18 +263,20 @@ async function hideResultPanel() {
                     </p>
                   </div>
                   <div class="w-full">
-                    <ImageFileClassifier
-                      v-if="classifierMethod === 'file'"
-                      @progress="onClassificationProgress"
-                      @result="onClassificationResult"
-                      @image-file-removed="onClassificationImageRemoved"
-                    />
-                    <ImageWebcamClassifier
-                      v-if="classifierMethod === 'webcam'"
-                      @progress="onClassificationProgress"
-                      @result="onClassificationResult"
-                      @image-file-removed="onClassificationImageRemoved"
-                    />
+                    <keep-alive>
+                      <ImageFileClassifier
+                        v-if="classifierMethod === 'file'"
+                        @progress="onClassificationProgress"
+                        @result="onClassificationResult"
+                        @image-file-removed="onClassificationImageRemoved"
+                      />
+                    </keep-alive>
+                    <keep-alive>
+                      <ImageWebcamClassifier
+                        v-if="classifierMethod === 'webcam'"
+                        @stream="onClassificationStream"
+                      />
+                    </keep-alive>
                   </div>
                 </div>
               </div>
@@ -268,7 +303,7 @@ async function hideResultPanel() {
                 <h2
                   class="font-bold title-font text-sm text-gray-800 dark:text-gray-400 my-3 tracking-wider uppercase"
                 >
-                  Check your result
+                  {{ resultPanelTitle }}
                 </h2>
                 <div
                   class="leading-relaxed text-md text-stone-900 dark:text-slate-100"
@@ -295,7 +330,14 @@ async function hideResultPanel() {
                         :class="[unknownCategory ? 'hidden' : '']"
                       >
                         <span class="font-semibold mr-1">Confidence: </span>
-                        <span>{{ confidence }}</span>
+                        <vue3-autocounter
+                          ref="confidenceCounter"
+                          suffix="%"
+                          :autoinit="true"
+                          :startAmount="cachedConfidence"
+                          :endAmount="confidence"
+                          :duration="1"
+                        />
                       </p>
                     </div>
                   </div>
