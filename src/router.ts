@@ -14,13 +14,9 @@ export const routes = [
     component: MainPage,
   },
   {
-    path: "/404",
+    path: "/:pathMatch(.*)*",
     name: "path-not-found",
     component: PathNotFoundPage,
-  },
-  {
-    path: "/:pathMatch(.*)*",
-    redirect: "/404",
   },
 ];
 

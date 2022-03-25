@@ -11,6 +11,7 @@ import {
   faCamera,
   faMagnifyingGlass,
   faSpinner,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import App from "./App.vue";
 import Router from "./router";
@@ -26,7 +27,8 @@ library.add(
   faImage,
   faCamera,
   faMagnifyingGlass,
-  faSpinner
+  faSpinner,
+  faArrowLeft
 );
 
 createApp(App)
