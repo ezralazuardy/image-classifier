@@ -96,7 +96,7 @@ async function performClassification() {
       name="input-image-file"
       label-idle="Pick Image File"
       accepted-file-types="image/*"
-      class="mt-6 bg-slate-100 dark:bg-slate-800 active:bg-slate-200 dark:active:bg-slate-700 rounded-xl border-2 border-gray-400 border-opacity-80 border-dashed cursor-pointer transition"
+      class="mt-6 bg-slate-100 dark:bg-slate-800 active:bg-slate-200 dark:active:bg-slate-700 rounded-xl border-2 border-slate-600 dark:border-slate-500 border-opacity-50 border-dashed cursor-pointer transition"
       @addfile="onImageFileAdded"
       @removefile="onImageFileRemoved"
       :class="[imageFileLoaded ? '' : 'hover:scale-105 active:scale-100']"

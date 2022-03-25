@@ -10,30 +10,28 @@ const classifierMethod = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-wrap justify-center mx-auto w-full">
+  <div class="flex p-1 space-x-1 bg-slate-600 dark:bg-slate-800 rounded-xl">
     <router-link
       to="/"
-      class="cursor-pointer sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t"
       :class="[
+        'w-full py-2.5 text-sm leading-5 font-bold rounded-lg text-center transition',
         classifierMethod === 'file'
-          ? 'border-stone-500 dark:border-slate-100 text-stone-900 dark:text-slate-100'
-          : 'border-gray-300 hover:border-gray-400 dark:border-gray-600 dark:hover:border-gray-400 text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-300',
+          ? 'bg-slate-100 dark:bg-slate-600 text-slate-800 dark:text-slate-100 shadow'
+          : 'text-slate-100 hover:bg-white/[0.12] hover:text-white',
       ]"
     >
-      <font-awesome-icon icon="image" class="w-4 h-4" aria-hidden="true" />
-      <span class="ml-2 lg:ml-4">File</span>
+      File
     </router-link>
     <router-link
       to="/webcam"
-      class="cursor-pointer sm:px-6 py-3 w-1/2 sm:w-auto justify-center border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t"
       :class="[
+        'w-full py-2.5 text-sm leading-5 font-bold rounded-lg text-center transition',
         classifierMethod === 'webcam'
-          ? 'border-stone-500 dark:border-slate-100 text-stone-900 dark:text-slate-100'
-          : 'border-gray-300 hover:border-gray-400 dark:border-gray-600 dark:hover:border-gray-400 text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-300',
+          ? 'bg-slate-100 dark:bg-slate-600 text-slate-800 dark:text-slate-100 shadow'
+          : 'text-slate-100 hover:bg-white/[0.12] hover:text-white',
       ]"
     >
-      <font-awesome-icon icon="camera" class="w-4 h-4" aria-hidden="true" />
-      <span class="ml-2 lg:ml-4">Webcam</span>
+      Webcam
     </router-link>
   </div>
 </template>

@@ -12,6 +12,7 @@ import {
   faMagnifyingGlass,
   faSpinner,
   faArrowLeft,
+  faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import Vue3AutoCounter from "vue3-autocounter";
 import App from "./App.vue";
@@ -29,7 +30,8 @@ library.add(
   faCamera,
   faMagnifyingGlass,
   faSpinner,
-  faArrowLeft
+  faArrowLeft,
+  faCircleQuestion
 );
 
 createApp(App)

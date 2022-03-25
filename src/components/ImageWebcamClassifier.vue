@@ -76,7 +76,7 @@ onActivated(async () => {
 
     async function onResized() {
       if (p5.windowWidth > p5.windowHeight) {
-        canvas.resize(0.6 * p5.windowHeight, 0.45 * p5.windowHeight);
+        canvas.resize(0.5 * p5.windowHeight, 0.35 * p5.windowHeight);
       } else {
         canvas.resize(0.5 * p5.windowWidth, 0.3 * p5.windowWidth);
       }
@@ -101,7 +101,7 @@ async function resetRuntime() {
   <div class="mt-4 text-md text-stone-900 dark:text-slate-100 pb-8">
     <ClassifierMethodTab />
     <div
-      class="mt-6 p-6 bg-slate-100 dark:bg-slate-800 rounded-xl border-2 border-gray-400 border-opacity-80 border-dashed transition"
+      class="mt-6 p-6 bg-slate-100 dark:bg-slate-800 rounded-xl border-2 border-slate-600 dark:border-slate-500 border-opacity-50 border-dashed transition"
     >
       <div ref="p5Canvas" class="flex justify-center align-middle"></div>
     </div>

@@ -5,6 +5,7 @@ import Container from "../components/Container.vue";
 import NavigationBar from "../components/NavigationBar.vue";
 import ImageFileClassifier from "../components/ImageFileClassifier.vue";
 import ImageWebcamClassifier from "../components/ImageWebcamClassifier.vue";
+import Dialog from "../components/Dialog.vue";
 
 const router = useRouter();
 
@@ -18,6 +19,7 @@ const cachedConfidence = ref(0);
 const confidence = ref(0);
 const category = ref("");
 const fact = ref("");
+const helpDialogOpened = ref(false);
 
 const classifierMethod = computed(() => {
   const routeName =
@@ -33,6 +35,10 @@ watch(classifierMethod, () => {
 watch(confidence, () => {
   confidenceCounter.value.start();
 });
+
+function openHelpDialog(state) {
+  helpDialogOpened.value = state;
+}
 
 async function onClassificationProgress() {
   await hideResultPanel();
@@ -144,7 +150,7 @@ async function hideResultPanel() {
                         title="Find cat images"
                       >
                         <div
-                          class="active:scale-100 hover:scale-105 bg-slate-100 dark:bg-slate-800 active:bg-slate-200 dark:active:bg-slate-700 active:text-slate-600 dark:active:text-stone-400 transition flex rounded-xl border-2 border-gray-400 border-opacity-50 px-6 py-4 sm:flex-row flex-col"
+                          class="active:scale-100 hover:scale-105 bg-slate-100 dark:bg-slate-800 active:bg-slate-200 dark:active:bg-slate-700 active:text-slate-600 dark:active:text-stone-400 transition flex rounded-xl border-2 border-slate-600 dark:border-slate-500 border-opacity-50 px-6 py-4 sm:flex-row flex-col"
                         >
                           <div
                             class="w-10 h-10 lg:w-12 lg:h-12 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full text-stone-900 dark:text-slate-100 bg-slate-300 dark:bg-slate-600 flex-shrink-0"
@@ -174,7 +180,7 @@ async function hideResultPanel() {
                         title="Find dog images"
                       >
                         <div
-                          class="active:scale-100 hover:scale-105 bg-slate-100 dark:bg-slate-800 active:bg-slate-200 dark:active:bg-slate-700 active:text-slate-600 dark:active:text-stone-400 transition flex rounded-xl border-2 border-gray-400 border-opacity-50 px-6 py-4 sm:flex-row flex-col"
+                          class="active:scale-100 hover:scale-105 bg-slate-100 dark:bg-slate-800 active:bg-slate-200 dark:active:bg-slate-700 active:text-slate-600 dark:active:text-stone-400 transition flex rounded-xl border-2 border-slate-600 dark:border-slate-500 border-opacity-50 px-6 py-4 sm:flex-row flex-col"
                         >
                           <div
                             class="w-10 h-10 lg:w-12 lg:h-12 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full text-stone-900 dark:text-slate-100 bg-slate-300 dark:bg-slate-600 flex-shrink-0"
@@ -226,8 +232,9 @@ async function hideResultPanel() {
                     <p>
                       You can do the image classification with webcam or by
                       manually upload an image. Uploading an image manually will
-                      result in better classification accuracy. Just make sure
-                      to print the image if you want to classify by webcam.
+                      result in better classification accuracy. Make sure to
+                      print the image and use better room lighting if you want
+                      to classify by webcam.
                     </p>
                   </div>
                 </div>
@@ -317,12 +324,25 @@ async function hideResultPanel() {
                     <div
                       class="text-start w-full text-stone-900 dark:text-slate-100"
                     >
-                      <h1
-                        class="animate-bounce text-xl font-bold title-font mt-1"
-                      >
-                        {{ category }}
-                      </h1>
-                      <p class="mx-auto leading-relaxed text-sm mt-2">
+                      <div class="flex flex-row w-full">
+                        <span
+                          class="animate-bounce w-8/12 text-xl font-bold title-font pt-1"
+                        >
+                          {{ category }}
+                        </span>
+                        <div class="flex w-4/12 justify-end">
+                          <a
+                            @click="openHelpDialog(true)"
+                            class="active:scale-100 hover:scale-125 active:text-slate-600 dark:active:text-slate-400 cursor-pointer transition"
+                          >
+                            <font-awesome-icon
+                              icon="circle-question"
+                              class="w-5 h-5"
+                            />
+                          </a>
+                        </div>
+                      </div>
+                      <p class="mx-auto leading-relaxed text-sm mt-3">
                         {{ fact }}
                       </p>
                       <p
@@ -347,6 +367,59 @@ async function hideResultPanel() {
           </div>
         </div>
       </Container>
+      <Dialog
+        :show="helpDialogOpened"
+        @close="openHelpDialog(false)"
+        title="Where are these data come from?"
+      >
+        <template #content>
+          <p>
+            Image Classifier uses a Supervised Machine Learning Model that built
+            using
+            <a
+              href="https://teachablemachine.withgoogle.com"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="font-semibold text-gray-700 dark:text-gray-300 hover:underline active:text-gray-900 dark:active:text-gray-400 transition"
+              >Teachable Machine</a
+            >
+            with the image dataset provided by
+            <a
+              href="https://kaggle.com"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="font-semibold text-gray-700 dark:text-gray-300 hover:underline active:text-gray-900 dark:active:text-gray-400 transition"
+              >Kaggle</a
+            >. For development purposes, check out this project source code at
+            <a
+              href="https://github.com/ezralazuardy/image-classifier"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="font-semibold text-gray-700 dark:text-gray-300 hover:underline active:text-gray-900 dark:active:text-gray-400 transition"
+              >GitHub</a
+            >.
+          </p>
+          <p class="mt-3">
+            Please contact the
+            <a
+              href="https://ezralazuardy.com"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="font-semibold text-gray-700 dark:text-gray-300 hover:underline active:text-gray-900 dark:active:text-gray-400 transition"
+              >author</a
+            >
+            if you have any question or just want to report a bug.
+          </p>
+        </template>
+        <template #buttons>
+          <button
+            @click="openHelpDialog(false)"
+            class="w-full inline-flex justify-center px-4 py-2 mt-2 sm:ml-3 sm:w-auto text-stone-900 dark:text-slate-100 hover:bg-gray-200 active:bg-gray-300 dark:hover:bg-gray-700 dark:active:bg-gray-800 rounded-xl transition"
+          >
+            Close
+          </button>
+        </template>
+      </Dialog>
     </main>
   </div>
 </template>
