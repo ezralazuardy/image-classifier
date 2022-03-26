@@ -21,7 +21,7 @@ Preview: [https://imgc.ezralazuardy.com](https://imgc.ezralazuardy.com)
 
 > Get the supervised machine learning model [here](https://teachablemachine.withgoogle.com/models/iDck0-wxs). All of the image model is based on [erkamk/cat-and-dog-images-dataset](https://www.kaggle.com/datasets/erkamk/cat-and-dog-images-dataset).
 
-> This app is written in [Typescript](https://www.typescriptlang.org) using [Vue 3](https://vuejs.org), [Vuex](https://vuex.vuejs.org), [Vite](https://vitejs.dev), [Volar](https://github.com/johnsoncodehk/volar), [p5.js](https://p5js.org), [ml5.js](https://ml5js.org), [Tailwind](https://tailwindcss.com), and [Teachable Machine](https://teachablemachine.withgoogle.com). The project is intended for my Artificial Intelligence coursework at [Diponegoro University](https://ft.undip.ac.id/en/site).
+> This app is written in [Typescript](https://www.typescriptlang.org) using [Vue](https://vuejs.org), [Vuex](https://vuex.vuejs.org), [Vite](https://vitejs.dev), [Volar](https://github.com/johnsoncodehk/volar), [p5](https://p5js.org), [ml5](https://ml5js.org), [Tailwind](https://tailwindcss.com), and [Teachable Machine](https://teachablemachine.withgoogle.com). The project is intended for my Artificial Intelligence coursework at [Diponegoro University](https://ft.undip.ac.id/en/site).
 
 ## 🚀 Quick start
 
@@ -35,4 +35,4 @@ npm install
 npm run dev
 ```
 
-> ⚠️ [Node.js](https://nodejs.org) need to be installed in your environment. Internet connection is required to run the app.
+> [Node.js](https://nodejs.org) need to be installed in your environment. Internet connection is required to run the app.
