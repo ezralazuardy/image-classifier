@@ -13,7 +13,7 @@
 
 ## 🖼️ Image Classifier
 
-A simple web application to classify an image data. The use case is to classify a **cat** or **dog** image.
+A simple web application to perform an image classification process based on image file input or video stream (webcam). The use case is to classify a **cat** or **dog** object inside the image target.
 
 Preview: [https://imgc.ezralazuardy.com](https://imgc.ezralazuardy.com)
 
