@@ -4,6 +4,11 @@ import MainPage from "./views/MainPage.vue";
 
 export const routes = [
   {
+    path: "/:pathMatch(.*)*",
+    name: "path-not-found",
+    component: PathNotFoundPage,
+  },
+  {
     path: "/",
     name: "main-page",
     component: MainPage,
@@ -12,11 +17,6 @@ export const routes = [
     path: "/webcam",
     name: "main-page-webcam",
     component: MainPage,
-  },
-  {
-    path: "/:pathMatch(.*)*",
-    name: "path-not-found",
-    component: PathNotFoundPage,
   },
 ];
 

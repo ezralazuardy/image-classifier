@@ -331,7 +331,7 @@ async function hideResultPanel() {
                           {{ category }}
                         </span>
                         <div class="flex w-4/12 justify-end">
-                          <a
+                          <span
                             @click="openHelpDialog(true)"
                             class="active:scale-100 hover:scale-125 active:text-slate-600 dark:active:text-slate-400 cursor-pointer transition"
                           >
@@ -339,7 +339,7 @@ async function hideResultPanel() {
                               icon="circle-question"
                               class="w-5 h-5"
                             />
-                          </a>
+                          </span>
                         </div>
                       </div>
                       <p class="mx-auto leading-relaxed text-sm mt-3">

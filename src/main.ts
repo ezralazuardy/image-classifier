@@ -1,3 +1,5 @@
+// @ts-ignore
+import { registerSW } from "virtual:pwa-register";
 import { createApp } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -33,6 +35,8 @@ library.add(
   faArrowLeft,
   faCircleQuestion
 );
+
+registerSW({ immediate: true });
 
 createApp(App)
   .use(Router)
