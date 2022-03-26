@@ -19,6 +19,7 @@ Run the application in your local environment.
 ```bash
 git clone https://github.com/ezralazuardy/image-classifier.git
 cd image-classifier
+cp .env.example .env
 npm install
 npm run dev
 ```
