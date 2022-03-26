@@ -53,7 +53,6 @@ onActivated(async () => {
     async function onClassified(results) {
       if (!active.value) return;
       if (results.length > 0) {
-        console.log(cachedCategory !== results[0].label);
         if (cachedCategory !== results[0].label) {
           cachedFact =
             results[0].label.toLowerCase() === "cat"

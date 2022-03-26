@@ -16,10 +16,10 @@ import {
   faArrowLeft,
   faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
-import Vue3AutoCounter from "vue3-autocounter";
+import VueAutoCounter from "vue3-autocounter";
 import App from "./App.vue";
 import Router from "./router";
-import Store from "./store";
+import Store from "./stores/store";
 import "./assets/styles/base.scss";
 
 library.add(
@@ -41,6 +41,6 @@ registerSW({ immediate: true });
 createApp(App)
   .use(Router)
   .use(Store)
-  .component("vue3-autocounter", Vue3AutoCounter)
+  .component("vue-autocounter", VueAutoCounter)
   .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");

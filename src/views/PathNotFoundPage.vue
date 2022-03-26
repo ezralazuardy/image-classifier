@@ -11,11 +11,15 @@ import NavigationBar from "../components/NavigationBar.vue";
         <div
           class="bg-neutral-100 dark:bg-stone-900 rounded-2xl drop-shadow-2xl p-8 lg:p-14 lg:space-x-16 flex flex-col lg:flex-row transition"
         >
-          <img
-            class="rounded-xl max-h-34 drop-shadow-xl hover:scale-105 active:scale-95 cursor-pointer transition"
-            src="../assets/images/404.gif"
-          />
-          <div class="mt-8 lg:mt-0 text-stone-900 dark:text-slate-100 lg:pt-20">
+          <div class="w-full">
+            <img
+              class="rounded-xl drop-shadow-xl hover:scale-105 active:scale-95 cursor-pointer w-full aspect-square object-cover bg-gray-400 dark:bg-gray-600 transition"
+              src="../assets/images/404.gif"
+            />
+          </div>
+          <div
+            class="w-full mt-8 lg:mt-0 text-stone-900 dark:text-slate-100 lg:pt-24"
+          >
             <div class="font-black text-4xl lg:text-5xl tracking-normal">
               <p>404 and</p>
               <p class="mt-2">heartbreaks.</p>
@@ -27,6 +31,7 @@ import NavigationBar from "../components/NavigationBar.vue";
             </p>
             <p class="mt-12 lg:mt-16">
               <a
+                title="Back to main page"
                 href="/"
                 class="font-semibold animate-pulse hover:animate-none text-lg text-gray-700 dark:text-gray-300 active:text-gray-900 dark:active:text-gray-400 transition"
               >

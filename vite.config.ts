@@ -54,14 +54,23 @@ const pwaOptions: Partial<VitePWAOptions> = {
     type: "module",
     navigateFallback: "index.html",
   },
+  injectManifest: {
+    maximumFileSizeToCacheInBytes: 10000000,
+  },
+  workbox: {
+    maximumFileSizeToCacheInBytes: 10000000,
+  },
 };
 
-const replaceOptions = { __DATE__: new Date().toISOString() };
+const replaceOptions = {
+  __DATE__: new Date().toISOString(),
+  preventAssignment: true,
+};
 const claims = process.env.CLAIMS === "true";
 const reload = process.env.RELOAD_SW === "true";
 
 if (process.env.SW === "true") {
-  pwaOptions.srcDir = "src";
+  pwaOptions.srcDir = "src/workers";
   pwaOptions.filename = claims ? "claims-sw.ts" : "prompt-sw.ts";
   pwaOptions.strategies = "injectManifest";
   (pwaOptions.manifest as Partial<ManifestOptions>).name =
@@ -90,4 +99,7 @@ export default defineConfig({
     replace(replaceOptions),
     viteCompression({ algorithm: "brotliCompress" }),
   ],
+  build: {
+    chunkSizeWarningLimit: 4800,
+  },
 });

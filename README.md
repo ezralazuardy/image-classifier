@@ -36,3 +36,5 @@ npm run dev
 ```
 
 > [Node.js](https://nodejs.org) need to be installed in your environment. Internet connection is required to run the app.
+
+This app is doing it's machine learning computation on client side; powered by [ml5](https://ml5js.org) and integrated with some web technologies such as [p5](https://p5js.org) and [TensorFlow](https://www.tensorflow.org/js). It's better to run this app on desktop client rather than on mobile because of the system resource limitation.

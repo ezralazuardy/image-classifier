@@ -331,15 +331,16 @@ async function hideResultPanel() {
                           {{ category }}
                         </span>
                         <div class="flex w-4/12 justify-end">
-                          <span
+                          <button
                             @click="openHelpDialog(true)"
+                            title="About data"
                             class="active:scale-100 hover:scale-125 active:text-slate-600 dark:active:text-slate-400 cursor-pointer transition"
                           >
                             <font-awesome-icon
                               icon="circle-question"
                               class="w-5 h-5"
                             />
-                          </span>
+                          </button>
                         </div>
                       </div>
                       <p class="mx-auto leading-relaxed text-sm mt-3">
@@ -350,7 +351,7 @@ async function hideResultPanel() {
                         :class="[unknownCategory ? 'hidden' : '']"
                       >
                         <span class="font-semibold mr-1">Confidence: </span>
-                        <vue3-autocounter
+                        <vue-autocounter
                           ref="confidenceCounter"
                           suffix="%"
                           :autoinit="true"
@@ -377,6 +378,7 @@ async function hideResultPanel() {
             Image Classifier uses a Supervised Machine Learning Model that built
             using
             <a
+              title="Teachable Machine website"
               href="https://teachablemachine.withgoogle.com"
               rel="noopener noreferrer"
               target="_blank"
@@ -385,6 +387,7 @@ async function hideResultPanel() {
             >
             with the image dataset provided by
             <a
+              title="Kaggle website"
               href="https://kaggle.com"
               rel="noopener noreferrer"
               target="_blank"
@@ -392,6 +395,7 @@ async function hideResultPanel() {
               >Kaggle</a
             >. For development purposes, check out this project source code at
             <a
+              title="Project's repository"
               href="https://github.com/ezralazuardy/image-classifier"
               rel="noopener noreferrer"
               target="_blank"
@@ -402,6 +406,7 @@ async function hideResultPanel() {
           <p class="mt-3">
             Please contact the
             <a
+              title="Author's profile"
               href="https://ezralazuardy.com"
               rel="noopener noreferrer"
               target="_blank"

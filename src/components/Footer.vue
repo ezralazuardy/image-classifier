@@ -9,6 +9,7 @@
         >
           © 2022 —
           <a
+            title="Author's profile"
             href="https://ezralazuardy.com"
             rel="noopener noreferrer"
             target="_blank"
@@ -21,6 +22,7 @@
           class="text-stone-900 dark:text-slate-100 inline-flex lg:ml-auto mt-4 lg:mt-0 justify-center lg:justify-start"
         >
           <a
+            title="GitHub"
             href="https://github.com/ezralazuardy"
             rel="noopener noreferrer"
             target="_blank"
@@ -41,6 +43,7 @@
             </svg>
           </a>
           <a
+            title="Instagram"
             href="https://instagram.com/ezralazuardyy"
             rel="noopener noreferrer"
             target="_blank"
@@ -62,6 +65,7 @@
             </svg>
           </a>
           <a
+            title="LinkedIn"
             href="https://linkedin.com/in/ezralazuardy"
             rel="noopener noreferrer"
             target="_blank"
@@ -83,6 +87,7 @@
             </svg>
           </a>
           <a
+            title="Soundcloud"
             href="https://soundcloud.com/ezralazuardy"
             rel="noopener noreferrer"
             target="_blank"
