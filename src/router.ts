@@ -5,6 +5,11 @@ import MainPage from "./views/MainPage.vue";
 export const routes = [
   {
     path: "/:pathMatch(.*)*",
+    name: "404-path-not-found",
+    component: PathNotFoundPage,
+  },
+  {
+    path: "/404",
     name: "path-not-found",
     component: PathNotFoundPage,
   },
