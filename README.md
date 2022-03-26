@@ -1,5 +1,14 @@
+<a href="https://imgc.ezralazuardy.com/">
+  <img src="https://therealsujitk-vercel-badge.vercel.app/?app=image-classifier" alt="Deployment">
+</a>
+<a href="https://github.com/ezralazuardy/image-classifier/actions/workflows/codeql-analysis.yml">
+  <img src="https://img.shields.io/github/workflow/status/ezralazuardy/image-classifier/CodeQL?label=security" alt="CodeQL Security Analysis" target="_blank" rel="noopener noreferrer">
+</a>
 <a href="https://github.com/ezralazuardy/image-classifier/blob/master/LICENSE">
   <img src="https://img.shields.io/github/license/ezralazuardy/image-classifier" alt="License" target="_blank" rel="noopener noreferrer">
+</a>
+<a href="https://web.dev/progressive-web-apps">
+    <img alt="PWA Support" src="https://img.shields.io/badge/%20pwa-enabled-blueviolet">
 </a>
 
 ## 🖼️ Image Classifier
