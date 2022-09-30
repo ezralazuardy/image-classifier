@@ -18,7 +18,7 @@
     "filepond-plugin-file-validate-type": "^1.2.6",
     "filepond-plugin-image-preview": "^4.6.10",
     "install": "^0.13.0",
-    "ml5": "^0.10.5",
+    "ml5": "^1.0.0",
     "npm": "^8.5.5",
     "p5": "^1.4.1",
     "remove": "^0.1.5",
